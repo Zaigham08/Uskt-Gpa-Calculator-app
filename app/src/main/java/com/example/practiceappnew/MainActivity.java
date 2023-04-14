@@ -30,6 +30,7 @@ public class MainActivity extends AppCompatActivity {
         creditIds = new int[]{R.id.creditList1,R.id.creditList2,R.id.creditList3,R.id.creditList4,R.id.creditList5,R.id.creditList6,R.id.creditList7,R.id.creditList8,};
         pointIds = new int[]{R.id.point1,R.id.point2,R.id.point3,R.id.point4,R.id.point5,R.id.point6,R.id.point7,R.id.point8};
         Button calculate = findViewById(R.id.calculate);
+        Button reset = findViewById(R.id.reset);
 
         for (int id : gradeIds) {
             Spinner gradeSpinner = findViewById(id);
@@ -55,8 +56,14 @@ public class MainActivity extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, creditsList);
             creditSpinner.setAdapter(adapter);
         }
-
         calculate.setOnClickListener(view -> CalculateGPA());
+
+        reset.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                ResetValues();
+            }
+        });
     }
 
     private void CalculateGPA() {
@@ -82,6 +89,16 @@ public class MainActivity extends AppCompatActivity {
         else
             Toast.makeText(this, "Invalid Way", Toast.LENGTH_LONG).show();
 
+    }
+
+    private void ResetValues(){
+        for(int i=0;i<8;i++){
+            Spinner gradeSpinner = findViewById(gradeIds[i]);
+            Spinner creditSpinner = findViewById(creditIds[i]);
+
+            gradeSpinner.setSelection(0);
+            creditSpinner.setSelection(0);
+        }
     }
 
     private double getGpaNoFromGradeName(String gradeName) {
