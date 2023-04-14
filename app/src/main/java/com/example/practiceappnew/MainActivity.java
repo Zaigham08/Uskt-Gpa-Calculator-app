@@ -39,10 +39,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                     String pointName = adapterView.getSelectedItem().toString();
-                    int j = 0;
                     TextView pointField = findViewById(getPointIdByGradeId(id));
                     pointField.setText(String.valueOf(getGpaNoFromGradeName(pointName)));
-                    j++;
                 }
 
                 @Override
@@ -56,7 +54,6 @@ public class MainActivity extends AppCompatActivity {
             Spinner creditSpinner = findViewById(id);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, creditsList);
             creditSpinner.setAdapter(adapter);
-            creditSpinner.setSelection(3);
         }
 
         calculate.setOnClickListener(view -> CalculateGPA());
@@ -110,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
             case "D":
                 return 1.0;
             default:
-                return 0.0;
+                return 0;
         }
     }
 
