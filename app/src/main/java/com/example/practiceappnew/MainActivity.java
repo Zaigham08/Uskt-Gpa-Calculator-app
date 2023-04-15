@@ -2,8 +2,8 @@ package com.example.practiceappnew;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -14,7 +14,6 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static final String TAG = "MainActivity";
     public double sumGrade = 0, sumCredit = 0, result = 0;
     String[] gradesList = new String[]{"Select","A+","A","B+","B","B-","C+","C","C-","D+","D","F"};
     String[] creditsList = new String[]{"Select","1","2","3","4"};
@@ -58,14 +57,10 @@ public class MainActivity extends AppCompatActivity {
         }
         calculate.setOnClickListener(view -> CalculateGPA());
 
-        reset.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                ResetValues();
-            }
-        });
+        reset.setOnClickListener(view -> ResetValues());
     }
 
+    @SuppressLint("DefaultLocale")
     private void CalculateGPA() {
         sumGrade = 0; sumCredit =0;
         for(int i=0;i<8;i++){
