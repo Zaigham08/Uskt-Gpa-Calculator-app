@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         for(int i=0;i<8;i++){
             Spinner gradeSpinner = findViewById(gradeIds[i]);
             Spinner creditSpinner = findViewById(creditIds[i]);
-            if((gradeSpinner.getSelectedItem().toString())!="Select" && (creditSpinner.getSelectedItem().toString())!="Select"){
+            if(!(gradeSpinner.getSelectedItem().toString()).equals("Select") && !(creditSpinner.getSelectedItem().toString()).equals("Select")){
                 double gpa = getGpaNoFromGradeName(gradeSpinner.getSelectedItem().toString());
                 double credit = Double.parseDouble(creditSpinner.getSelectedItem().toString());
                 sumGrade += gpa * credit;
@@ -85,9 +85,9 @@ public class MainActivity extends AppCompatActivity {
         result = sumGrade/sumCredit;
 
         if(!String.valueOf(result).equals("NaN"))
-            Toast.makeText(this, String.format("Your GPA is : %.2f", result), Toast.LENGTH_LONG).show();
+            Toast.makeText(this, String.format("Your GPA is : %.2f", result), Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this, "Invalid Way", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Invalid Way", Toast.LENGTH_SHORT).show();
 
     }
 
