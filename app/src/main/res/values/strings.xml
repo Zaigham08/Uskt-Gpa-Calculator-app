@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Practice App new</string>
+    <string name="app_name">GPA CGPA Calculator (USKT)</string>
     <string name="uskt">USKT</string>
     <string name="uskt_gpa_calculator">USKT GPA Calculator</string>
 </resources>

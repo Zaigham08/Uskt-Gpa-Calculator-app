@@ -1,4 +1,4 @@
-package com.example.practiceappnew;
+package com.test.myproject;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -11,6 +11,8 @@ import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.test.myproject.R;
 
 public class MainActivity extends AppCompatActivity {
 

@@ -1,10 +1,12 @@
-package com.example.practiceappnew;
+package com.test.myproject;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.test.myproject.R;
 
 public class FlashActivity extends AppCompatActivity {
 
