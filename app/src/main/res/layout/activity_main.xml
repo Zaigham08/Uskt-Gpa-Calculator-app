@@ -4,24 +4,57 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity"
+    android:background="@drawable/app_wallpaper"
+    android:padding="5dp"
     android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text= "@string/uskt_gpa_calculator"
-        android:textColor="#0640EC"
-        android:textStyle="bold"
-        android:textSize="30sp"
-        android:gravity="center"
-        android:layout_margin="6dp"
-        />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text= "Select Your Grade and Credit Hours"
-        android:textColor="#D52323"
+        android:text= "@string/enter_prev_cgpa_total_cr_hours"
+        android:textColor="@color/light_green"
+        android:textStyle="bold"
+        android:textSize="23sp"
+        android:gravity="center"
+        android:layout_marginTop="8dp"
+        />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:background="@color/grey"
+        android:layout_margin="12dp">
+
+        <EditText
+            android:id="@+id/PrevCGPA"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:textColorHint="@color/black"
+            android:gravity="center"
+            android:hint="@string/enter_prev_cgpa"
+            android:inputType="numberDecimal"/>
+
+        <EditText
+            android:id="@+id/TotalCredit"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:textColorHint="@color/black"
+            android:hint="@string/enter_total_credit_hours"
+            android:inputType="numberDecimal"/>
+
+    </LinearLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text= "@string/select_your_grade_credit_hours"
+        android:textColor="@color/light_green"
         android:textStyle="bold"
         android:textSize="23sp"
         android:gravity="center"
@@ -32,8 +65,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="12dp"
-        android:stretchColumns="1,3,4"
-        android:shrinkColumns="4">
+        android:stretchColumns="1,3">
 
         <TableRow
             android:layout_width="match_parent"
@@ -42,7 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text= "No."
-                android:textColor="@color/black"
+                android:textColor="@color/cream"
                 android:textStyle="bold"
                 android:textSize="22sp"
                 android:gravity="center"
@@ -52,7 +84,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text= "  Grade"
-                android:textColor="@color/black"
+                android:textColor="@color/cream"
                 android:textStyle="bold"
                 android:textSize="22sp"
                 android:layout_column="2"
@@ -61,7 +93,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text= "Points"
-                android:textColor="@color/black"
+                android:textColor="@color/cream"
                 android:textStyle="bold"
                 android:gravity="center"
                 android:textSize="22sp"
@@ -71,7 +103,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:text= "  Credit"
-                android:textColor="@color/black"
+                android:textColor="@color/cream"
                 android:textStyle="bold"
                 android:textSize="22sp"
                 android:layout_column="4"
@@ -81,9 +113,9 @@
 
         <TableRow
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="100dp"
             android:layout_marginTop="8dp"
-            android:background="@color/teal">
+            android:background="@color/grey">
             
             <TextView
                 android:layout_width="match_parent"
@@ -120,7 +152,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal"
+            android:background="@color/grey"
             android:layout_marginTop="3dp">
             <TextView
                 android:layout_width="match_parent"
@@ -158,7 +190,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal"
+            android:background="@color/grey"
             android:layout_marginTop="3dp">
             <TextView
                 android:layout_width="match_parent"
@@ -195,7 +227,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal"
+            android:background="@color/grey"
             android:layout_marginTop="3dp">
             <TextView
                 android:layout_width="match_parent"
@@ -232,7 +264,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal"
+            android:background="@color/grey"
             android:layout_marginTop="3dp">
             <TextView
                 android:layout_width="match_parent"
@@ -269,7 +301,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal"
+            android:background="@color/grey"
             android:layout_marginTop="3dp">
             <TextView
                 android:layout_width="match_parent"
@@ -305,7 +337,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal"
+            android:background="@color/grey"
             android:layout_marginTop="3dp">
             <TextView
                 android:layout_width="match_parent"
@@ -341,7 +373,7 @@
         <TableRow
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="@color/teal"
+            android:background="@color/grey"
             android:layout_marginTop="3dp">
             <TextView
                 android:layout_width="match_parent"

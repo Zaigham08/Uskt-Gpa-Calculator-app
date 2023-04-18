@@ -2,4 +2,9 @@
     <string name="app_name">GPA CGPA Calculator (USKT)</string>
     <string name="uskt">USKT</string>
     <string name="uskt_gpa_calculator">USKT GPA Calculator</string>
+    <string name="grade_list_des">Grade List</string>
+    <string name="enter_prev_cgpa_total_cr_hours"><![CDATA[Enter Prev CGPA & Total Credit hrs]]></string>
+    <string name="select_your_grade_credit_hours"><![CDATA[Select Your Grade & Credit Hours]]></string>
+    <string name="enter_prev_cgpa"> Prev CGPA</string>
+    <string name="enter_total_credit_hours">Total Credit hrs</string>
 </resources>

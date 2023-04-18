@@ -1,25 +1,27 @@
 package com.test.myproject;
 
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.test.myproject.R;
-
 public class MainActivity extends AppCompatActivity {
 
-    public double sumGrade = 0, sumCredit = 0, result = 0;
+    public double sumGrade = 0, sumCredit = 0, GPA = 0, CGPA = 0,PrevCGPA, TotalCreditHours;
     String[] gradesList = new String[]{"Select","A+","A","B+","B","B-","C+","C","C-","D+","D","F"};
     String[] creditsList = new String[]{"Select","1","2","3","4"};
     int[] gradeIds, creditIds, pointIds;
+    EditText editTextPrevCGPA, editTextTotalCreditHours;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,11 +29,45 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        ActionBar actionBar = getSupportActionBar();
+        if (actionBar != null) {
+            // Set the title and enable the back button
+            actionBar.setTitle("GPA Calculator");
+            actionBar.setDisplayHomeAsUpEnabled(true);
+        }
+
         gradeIds = new int[]{R.id.gradeList1,R.id.gradeList2,R.id.gradeList3,R.id.gradeList4,R.id.gradeList5,R.id.gradeList6,R.id.gradeList7,R.id.gradeList8,};
         creditIds = new int[]{R.id.creditList1,R.id.creditList2,R.id.creditList3,R.id.creditList4,R.id.creditList5,R.id.creditList6,R.id.creditList7,R.id.creditList8,};
         pointIds = new int[]{R.id.point1,R.id.point2,R.id.point3,R.id.point4,R.id.point5,R.id.point6,R.id.point7,R.id.point8};
         Button calculate = findViewById(R.id.calculate);
         Button reset = findViewById(R.id.reset);
+
+        editTextPrevCGPA = findViewById(R.id.PrevCGPA);
+        editTextTotalCreditHours = findViewById(R.id.TotalCredit);
+
+//        float totalCreditHours = editTextTotalCreditHours.getText();
+//
+
+//        if (!TextUtils.isEmpty(editTextTotalCreditHours.getText())) {
+//         prevCGPA = Float.parseFloat(editTextPrevCGPA.getText().toString());
+//
+//        } else {
+//
+//        }
+//
+//        if (TextUtils.isEmpty(totalCreditHours)) {
+//            TotalCreditHours=0;
+//        } else {
+//                TotalCreditHours = Float.parseFloat(totalCreditHours);
+//        }
+
+//        float PrevCGPA = Float.parseFloat(prevCGPA);
+//        float TotalCreditHours = Float.parseFloat(totalCreditHours);
+
+//        if (cgpa < 0.0 || cgpa > 4.0) {
+//            editTextPrevCGPA.setError("CGPA must be between 0.0 and 4.0");
+//            return;
+//        }
 
         for (int id : gradeIds) {
             Spinner gradeSpinner = findViewById(id);
@@ -57,9 +93,48 @@ public class MainActivity extends AppCompatActivity {
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, creditsList);
             creditSpinner.setAdapter(adapter);
         }
-        calculate.setOnClickListener(view -> CalculateGPA());
+        calculate.setOnClickListener(view -> {
+            String strCGPA = editTextPrevCGPA.getText().toString();
+            String strCredit = editTextTotalCreditHours.getText().toString();
+
+            if(strCGPA.isEmpty() && strCredit.isEmpty()){
+                PrevCGPA = 0;
+                TotalCreditHours = 0;
+            }
+            else if(!strCGPA.isEmpty() && strCredit.isEmpty()){
+
+                editTextTotalCreditHours.setError("Enter Credit hrs Plz");
+                return;
+            }
+            else if(strCGPA.isEmpty() && !strCredit.isEmpty()){
+                editTextPrevCGPA.setError("Enter CGPA Plz");
+                return;
+            }
+            else{
+                PrevCGPA = Double.parseDouble(strCGPA);
+                TotalCreditHours = Double.parseDouble(strCredit);
+                if(PrevCGPA<0.0 || PrevCGPA>4.0){
+                    editTextPrevCGPA.setError("CGPA must be between 0.0 and 4.0");
+                    return;
+                }
+            }
+
+            CalculateGPA();
+            CalculateCGPA(PrevCGPA,TotalCreditHours);
+        });
 
         reset.setOnClickListener(view -> ResetValues());
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle back button click here
+        int id = item.getItemId();
+        if (id == android.R.id.home) {
+            finish();
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     @SuppressLint("DefaultLocale")
@@ -79,16 +154,30 @@ public class MainActivity extends AppCompatActivity {
                 sumCredit +=0;
             }
         }
-        result = sumGrade/sumCredit;
+        GPA = sumGrade/sumCredit;
 
-        if(!String.valueOf(result).equals("NaN"))
-            Toast.makeText(this, String.format("Your GPA is : %.2f", result), Toast.LENGTH_SHORT).show();
+
+    }
+    private void CalculateCGPA(Double PrevCGPA,Double TotalCreditHours){
+        if (PrevCGPA==0 || TotalCreditHours==0){
+            CGPA=0;
+        }
         else
-            Toast.makeText(this, "Invalid Way", Toast.LENGTH_SHORT).show();
+            CGPA = ((PrevCGPA*TotalCreditHours)+(GPA*sumCredit))/(sumCredit+TotalCreditHours);
 
+        @SuppressLint("DefaultLocale")
+        String message = String.format("GPA : %.2f \nCGPA : %.2f", GPA, CGPA);
+        if(!String.valueOf(GPA).equals("NaN"))
+            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        else
+            Toast.makeText(this, "invalid way", Toast.LENGTH_SHORT).show();
     }
 
     private void ResetValues(){
+
+        editTextPrevCGPA.setText("");
+        editTextTotalCreditHours.setText("");
+
         for(int i=0;i<8;i++){
             Spinner gradeSpinner = findViewById(gradeIds[i]);
             Spinner creditSpinner = findViewById(creditIds[i]);
