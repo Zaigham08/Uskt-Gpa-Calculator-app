@@ -466,13 +466,13 @@
 
     </LinearLayout>
 
-<!--    <com.google.android.material.navigation.NavigationView-->
-<!--        android:id="@+id/navView"-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="400dp"-->
-<!--        android:fitsSystemWindows="true"-->
-<!--        android:layout_gravity="end"-->
-<!--        app:headerLayout="@layout/grade_header_layout"-->
-<!--        />-->
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="400dp"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="end"
+        app:headerLayout="@layout/grade_header_layout"
+        />
 
 </androidx.drawerlayout.widget.DrawerLayout>
