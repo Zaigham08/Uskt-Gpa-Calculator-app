@@ -55,9 +55,9 @@ public class HomeActivity extends AppCompatActivity {
             // Handle navigation view item clicks here
             int id = menuItem.getItemId();
 
-            if (toggle.onOptionsItemSelected(menuItem)) {
-                return true;
-            }
+//            if (toggle.onOptionsItemSelected(menuItem)) {
+//                return true;
+//            }
 
             if (id == R.id.nav_calculate_gpa) {
                 Intent intent = new Intent(HomeActivity.this,MainActivity.class);

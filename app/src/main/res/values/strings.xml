@@ -9,5 +9,6 @@
     <string name="enter_total_credit_hours">Total Credit</string>
     <string name="openDrawer">Open navigation drawer</string>
     <string name="closeDrawer">Close navigation drawer</string>
+    <string name="view_grade_list">View\nGrade List</string>
 
 </resources>

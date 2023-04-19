@@ -1,10 +1,15 @@
 package com.test.myproject;
 
 import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.GravityCompat;
+import androidx.drawerlayout.widget.DrawerLayout;
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
+import android.text.Html;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
@@ -55,6 +60,10 @@ public class MainActivity extends AppCompatActivity {
                     String pointName = adapterView.getSelectedItem().toString();
                     TextView pointField = findViewById(getPointIdByGradeId(id));
                     pointField.setText(String.valueOf(getGpaNoFromGradeName(pointName)));
+
+                    Spinner creditSpinner = findViewById(getCreditIdByGradeId(id));
+                    if(gradeSpinner.getSelectedItem().toString()!="Select")
+                        creditSpinner.setSelection(3);
                 }
 
                 @Override
@@ -82,19 +91,18 @@ public class MainActivity extends AppCompatActivity {
                 editTextTotalCreditHours.setError("Enter Credit hrs Plz");
                 return;
             }
-            else if(strCGPA.isEmpty() && !strCredit.isEmpty()){
+            else if(strCGPA.isEmpty()){
                 editTextPrevCGPA.setError("Enter CGPA Plz");
                 return;
             }
             else{
                 PrevCGPA = Double.parseDouble(strCGPA);
                 TotalCreditHours = Double.parseDouble(strCredit);
-                if(PrevCGPA<0.0 || PrevCGPA>4.0){
+                if(PrevCGPA<=0.0 || PrevCGPA>4.0){
                     editTextPrevCGPA.setError("CGPA must be between 0.0 and 4.0");
                     return;
                 }
             }
-
             CalculateGPA();
             CalculateCGPA(PrevCGPA,TotalCreditHours);
         });
@@ -110,8 +118,20 @@ public class MainActivity extends AppCompatActivity {
             finish();
             return true;
         }
+        if (id == R.id.drawer_item) {
+            DrawerLayout drawer = findViewById(R.id.gradeDrawer);
+            drawer.openDrawer(GravityCompat.END);
+            return true;
+        }
         return super.onOptionsItemSelected(item);
     }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.drawer_menu, menu);
+        return true;
+    }
+
 
     @SuppressLint("DefaultLocale")
     private void CalculateGPA() {
@@ -142,9 +162,14 @@ public class MainActivity extends AppCompatActivity {
             CGPA = ((PrevCGPA*TotalCreditHours)+(GPA*sumCredit))/(sumCredit+TotalCreditHours);
 
         @SuppressLint("DefaultLocale")
-        String message = String.format("GPA : %.2f \nCGPA : %.2f", GPA, CGPA);
-        if(!String.valueOf(GPA).equals("NaN"))
-            Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
+        String message = String.format("<b>GPA &nbsp;&nbsp;&nbsp;:</b> &nbsp; %.2f <br> <b>CGPA :</b> &nbsp; %.2f", GPA, CGPA);
+        if(!String.valueOf(GPA).equals("NaN")){
+            new AlertDialog.Builder(MainActivity.this)
+                    .setIcon(R.drawable.result_icon)
+                    .setTitle(Html.fromHtml("<b>Result</b>",1))
+                    .setMessage(Html.fromHtml(message,1))
+                    .setPositiveButton("OK", null).show();
+        }
         else
             Toast.makeText(this, "Enter both Grade & Credit hrs Plz", Toast.LENGTH_SHORT).show();
     }
@@ -208,6 +233,24 @@ public class MainActivity extends AppCompatActivity {
         else
             return R.id.point8;
     }
+    private int getCreditIdByGradeId(int id){
+            if(id==R.id.gradeList1)
+                return R.id.creditList1;
+            else if(id==R.id.gradeList2)
+                return R.id.creditList2;
+            else if(id==R.id.gradeList3)
+                return R.id.creditList3;
+            else if(id==R.id.gradeList4)
+                return R.id.creditList4;
+            else if(id==R.id.gradeList5)
+                return R.id.creditList5;
+            else if(id==R.id.gradeList6)
+                return R.id.creditList6;
+            else if(id==R.id.gradeList7)
+                return R.id.creditList7;
+            else
+                return R.id.creditList8;
+        }
 
 }
 

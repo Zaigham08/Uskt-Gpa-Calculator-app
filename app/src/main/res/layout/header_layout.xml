@@ -9,9 +9,9 @@
     android:orientation="vertical">
 
     <ImageView
-        android:layout_width="94dp"
-        android:layout_height="94dp"
-        android:padding="8dp"
+        android:layout_width="90dp"
+        android:layout_height="90dp"
+        android:padding="9dp"
         android:background="@drawable/circular_image"
         android:contentDescription="Header Image"
         android:src="@drawable/my_app_logo"/>
