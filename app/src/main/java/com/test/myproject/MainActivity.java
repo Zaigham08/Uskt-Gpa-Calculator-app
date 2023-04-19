@@ -45,30 +45,6 @@ public class MainActivity extends AppCompatActivity {
         editTextPrevCGPA = findViewById(R.id.PrevCGPA);
         editTextTotalCreditHours = findViewById(R.id.TotalCredit);
 
-//        float totalCreditHours = editTextTotalCreditHours.getText();
-//
-
-//        if (!TextUtils.isEmpty(editTextTotalCreditHours.getText())) {
-//         prevCGPA = Float.parseFloat(editTextPrevCGPA.getText().toString());
-//
-//        } else {
-//
-//        }
-//
-//        if (TextUtils.isEmpty(totalCreditHours)) {
-//            TotalCreditHours=0;
-//        } else {
-//                TotalCreditHours = Float.parseFloat(totalCreditHours);
-//        }
-
-//        float PrevCGPA = Float.parseFloat(prevCGPA);
-//        float TotalCreditHours = Float.parseFloat(totalCreditHours);
-
-//        if (cgpa < 0.0 || cgpa > 4.0) {
-//            editTextPrevCGPA.setError("CGPA must be between 0.0 and 4.0");
-//            return;
-//        }
-
         for (int id : gradeIds) {
             Spinner gradeSpinner = findViewById(id);
             ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, gradesList);

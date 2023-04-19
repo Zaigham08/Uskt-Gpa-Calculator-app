@@ -23,7 +23,8 @@
                 android:layout_height="wrap_content"
                 android:id="@+id/toolbar"
                 app:title="   Home"
-                android:background="@color/light_blue"/>
+                app:titleTextColor="@color/white"
+                android:background="#198EDC"/>
 
         </com.google.android.material.appbar.AppBarLayout>
 

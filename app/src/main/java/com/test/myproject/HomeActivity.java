@@ -38,12 +38,6 @@ public class HomeActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
-        ActionBar actionBar = getSupportActionBar();
-        if (actionBar != null) {
-            actionBar.setTitle(" Home");
-        }
-//        actionBar.setDisplayHomeAsUpEnabled(true);
-
         gpa_button.setOnClickListener(view -> {
             Intent intent = new Intent(HomeActivity.this,MainActivity.class);
             startActivity(intent);
