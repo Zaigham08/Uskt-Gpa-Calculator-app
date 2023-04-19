@@ -1,0 +1,22 @@
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group >
+        <item
+            android:id="@+id/nav_calculate_gpa"
+            android:icon="@drawable/ic_baseline_calculate_24"
+            android:title="Calculate GPA" />
+        <item
+            android:id="@+id/nav_grade_list"
+            android:icon="@drawable/ic_baseline_grading_24"
+            android:title="Grade List" />
+    </group>
+
+        <item
+            android:id="@+id/nav_share"
+            android:icon="@drawable/ic_share"
+            android:title="Share" />
+        <item
+            android:id="@+id/nav_rate_us"
+            android:icon="@drawable/ic_rate_us"
+            android:title="Rate Us" />
+
+</menu>

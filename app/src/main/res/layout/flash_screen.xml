@@ -14,12 +14,13 @@
         android:src="@drawable/my_app_logo" />
 
     <TextView
+        android:id="@+id/Myname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerInParent="true"
-        android:layout_marginBottom="10dp"
-        android:text="Made by\nZaigham"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/logo"
+        android:layout_marginTop="10dp"
+        android:text="Made by Zaigham"
         android:textColor="@color/dark_blue"
         android:textSize="20sp" />
 

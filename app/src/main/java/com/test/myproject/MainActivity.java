@@ -170,7 +170,7 @@ public class MainActivity extends AppCompatActivity {
         if(!String.valueOf(GPA).equals("NaN"))
             Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
         else
-            Toast.makeText(this, "invalid way", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Enter both Grade & Credit hrs Plz", Toast.LENGTH_SHORT).show();
     }
 
     private void ResetValues(){

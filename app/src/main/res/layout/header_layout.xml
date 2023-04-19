@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="225dp"
+    android:padding="14sp"
+    android:gravity="bottom"
+    android:background="@drawable/header_background"
+    android:orientation="vertical">
+
+    <ImageView
+        android:layout_width="94dp"
+        android:layout_height="94dp"
+        android:padding="8dp"
+        android:background="@drawable/circular_image"
+        android:contentDescription="Header Image"
+        android:src="@drawable/my_app_logo"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="University of Sialkot"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:text="GPA CGPA Calculator"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:textSize="16sp"/>
+
+
+</LinearLayout>

@@ -7,6 +7,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -14,7 +15,7 @@ import com.test.myproject.R;
 
 public class FlashActivity extends AppCompatActivity {
 
-    private static final int SPLASH_SCREEN_TIMEOUT = 2000; // 2 seconds
+    private static final int SPLASH_SCREEN_TIMEOUT = 2400; // 2.4 seconds
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +23,12 @@ public class FlashActivity extends AppCompatActivity {
         setContentView(R.layout.flash_screen);
 
         ImageView logo = findViewById(R.id.logo);
+        TextView name = findViewById(R.id.Myname);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_animation);
+        Animation animation2 = AnimationUtils.loadAnimation(this, R.anim.coder_name_animation);
         logo.startAnimation(animation);
-//        logo.setVisibility(View.VISIBLE);
+        logo.setVisibility(View.VISIBLE);
+        name.startAnimation(animation2);
 
 
         new Handler().postDelayed(() -> {

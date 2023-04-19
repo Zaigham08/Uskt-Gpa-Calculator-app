@@ -1,39 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/drawerLayout"
     android:layout_height="match_parent"
-    android:background="@drawable/app_wallpaper">
+    android:layout_width="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:fitsSystemWindows="true"
+    tools:openDrawer="start"
+    tools:context=".HomeActivity">
 
-    <!-- Welcome message for the student -->
-    <TextView
-        android:id="@+id/welcome_textview"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/app_wallpaper">
+
+        <com.google.android.material.appbar.AppBarLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <androidx.appcompat.widget.Toolbar
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/toolbar"
+                app:title="   Home"
+                android:background="@color/light_blue"/>
+
+        </com.google.android.material.appbar.AppBarLayout>
+
+        <!-- Welcome message for the student -->
+        <TextView
+            android:id="@+id/welcome_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="80dp"
+            android:text="Welcome, Students!"
+            android:textColor="@color/white"
+            android:textSize="29sp"
+            android:textStyle="bold" />
+
+        <!-- Button for GPA calculation -->
+        <Button
+            android:id="@+id/gpa_button"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:layout_centerInParent="true"
+            android:text="Calculate GPA/CGPA"
+            android:textSize="17sp" />
+
+        <!-- Button for grade list -->
+        <Button
+            android:id="@+id/grade_list_button"
+            android:layout_width="200dp"
+            android:layout_height="80dp"
+            android:text="Grade List"
+            android:textSize="18sp"
+            android:layout_below="@+id/gpa_button"
+            android:layout_centerHorizontal="true"/>
+
+    </RelativeLayout >
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Welcome, Students!"
-        android:textSize="28sp"
-        android:textStyle="bold"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"/>
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/header_layout"
+        app:menu="@menu/activity_main_drawer"
+        />
 
-    <!-- Button for GPA calculation -->
-    <Button
-        android:id="@+id/gpa_button"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:text="Calculate GPA/CGPA"
-        android:textSize="19sp"
-        android:layout_centerHorizontal="true"
-        android:layout_centerVertical="true"/>
-
-    <!-- Button for grade list -->
-    <Button
-        android:id="@+id/grade_list_button"
-        android:layout_width="200dp"
-        android:layout_height="80dp"
-        android:text="Grade List"
-        android:textSize="20sp"
-        android:layout_below="@+id/gpa_button"
-        android:layout_centerHorizontal="true"/>
-
-</RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>
