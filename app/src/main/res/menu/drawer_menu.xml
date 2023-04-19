@@ -2,5 +2,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item android:id="@+id/drawer_item"
         android:title="@string/view_grade_list"
-        app:showAsAction="always"/>
+        app:showAsAction="always"
+        android:textAllCaps="false"/>
 </menu>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:padding="5dp"
-    android:background="@drawable/app_wallpaper"
+    android:background="@drawable/main_text_background"
     android:orientation="horizontal">
 
     <ImageView

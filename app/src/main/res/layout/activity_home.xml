@@ -13,7 +13,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/app_wallpaper">
+        android:background="@drawable/main_text_background">
 
         <com.google.android.material.appbar.AppBarLayout
             android:layout_width="match_parent"
@@ -30,16 +30,22 @@
         </com.google.android.material.appbar.AppBarLayout>
 
         <!-- Welcome message for the student -->
-        <TextView
-            android:id="@+id/welcome_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="80dp"
-            android:text="Welcome, Students!"
-            android:textColor="@color/white"
-            android:textSize="29sp"
-            android:textStyle="bold" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="100dp"
+            android:layout_marginTop="70dp"
+            android:background="@drawable/main_text_background"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:gravity="center"
+                android:text="Welcome, Students!"
+                android:textColor="@color/white"
+                android:textSize="29sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <!-- Button for GPA calculation -->
         <Button
@@ -47,7 +53,10 @@
             android:layout_width="200dp"
             android:layout_height="80dp"
             android:layout_centerInParent="true"
-            android:text="Calculate GPA/CGPA"
+            android:textAllCaps="false"
+            android:drawableLeft="@drawable/ic_baseline_calculate_24"
+            android:drawableTint="@android:color/white"
+            android:text="Calculate \nGPA/CGPA"
             android:textSize="17sp" />
 
         <!-- Button for grade list -->
@@ -55,10 +64,13 @@
             android:id="@+id/grade_list_button"
             android:layout_width="200dp"
             android:layout_height="80dp"
-            android:text="Grade List"
-            android:textSize="18sp"
             android:layout_below="@+id/gpa_button"
-            android:layout_centerHorizontal="true"/>
+            android:layout_centerHorizontal="true"
+            android:drawableLeft="@drawable/ic_baseline_grading_24"
+            android:drawableTint="@android:color/white"
+            android:text="Grade List"
+            android:textAllCaps="false"
+            android:textSize="18sp" />
 
     </RelativeLayout >
 

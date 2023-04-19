@@ -58,7 +58,6 @@ public class HomeActivity extends AppCompatActivity {
 //            if (toggle.onOptionsItemSelected(menuItem)) {
 //                return true;
 //            }
-
             if (id == R.id.nav_calculate_gpa) {
                 Intent intent = new Intent(HomeActivity.this,MainActivity.class);
                 startActivity(intent);
@@ -66,7 +65,14 @@ public class HomeActivity extends AppCompatActivity {
                 Intent intent = new Intent(HomeActivity.this,GradeListActivity.class);
                 startActivity(intent);
             } else if (id == R.id.nav_share) {
-                // Handle the share action
+                Intent intent = new Intent(Intent.ACTION_SEND);
+                intent.setType("text/plain");
+                String shareBody = "I am sending this message by my App";
+                String shareSub = "Share subject";
+                intent.putExtra(Intent.EXTRA_SUBJECT, shareSub);
+                intent.putExtra(Intent.EXTRA_TEXT, shareBody);
+                startActivity(Intent.createChooser(intent, "Share using"));
+                return true;
             } else if (id == R.id.nav_rate_us) {
                 // Handle the rate us action
             }
