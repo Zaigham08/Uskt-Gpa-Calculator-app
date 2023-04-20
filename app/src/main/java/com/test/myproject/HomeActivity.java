@@ -1,18 +1,18 @@
 package com.test.myproject;
 
-import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.google.android.material.navigation.NavigationView;
 
@@ -55,9 +55,6 @@ public class HomeActivity extends AppCompatActivity {
             // Handle navigation view item clicks here
             int id = menuItem.getItemId();
 
-//            if (toggle.onOptionsItemSelected(menuItem)) {
-//                return true;
-//            }
             if (id == R.id.nav_calculate_gpa) {
                 Intent intent = new Intent(HomeActivity.this,MainActivity.class);
                 startActivity(intent);
@@ -74,7 +71,7 @@ public class HomeActivity extends AppCompatActivity {
                 startActivity(Intent.createChooser(intent, "Share using"));
                 return true;
             } else if (id == R.id.nav_rate_us) {
-                // Handle the rate us action
+                Toast.makeText(this, "Comming Soon", Toast.LENGTH_SHORT).show();
             }
 
             drawerLayout.closeDrawer(GravityCompat.START);
@@ -88,7 +85,20 @@ public class HomeActivity extends AppCompatActivity {
             drawerLayout.closeDrawer(GravityCompat.START);
         }
         else{
-            super.onBackPressed();
+            new AlertDialog.Builder(this)
+                    .setIcon(R.drawable.exit_icon)
+                    .setTitle("Exit")
+                    .setMessage("Are you sure you want to exit?")
+                    .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            finish();
+                        }
+
+                    })
+                    .setNegativeButton("No", null)
+                    .show();
         }
     }
+
 }

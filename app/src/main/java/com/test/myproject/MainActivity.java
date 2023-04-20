@@ -3,6 +3,7 @@ package com.test.myproject;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatDelegate;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -34,6 +35,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO);
+
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
             // Set the title and enable the back button
@@ -62,7 +65,7 @@ public class MainActivity extends AppCompatActivity {
                     pointField.setText(String.valueOf(getGpaNoFromGradeName(pointName)));
 
                     Spinner creditSpinner = findViewById(getCreditIdByGradeId(id));
-                    if(gradeSpinner.getSelectedItem().toString()!="Select")
+                    if(!gradeSpinner.getSelectedItem().toString().equals("Select"))
                         creditSpinner.setSelection(3);
                 }
 
@@ -154,15 +157,22 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-    private void CalculateCGPA(Double PrevCGPA,Double TotalCreditHours){
+    @SuppressLint("DefaultLocale")
+    private void CalculateCGPA(Double PrevCGPA, Double TotalCreditHours){
+        String message;
         if (PrevCGPA==0 || TotalCreditHours==0){
             CGPA=0;
         }
         else
             CGPA = ((PrevCGPA*TotalCreditHours)+(GPA*sumCredit))/(sumCredit+TotalCreditHours);
 
-        @SuppressLint("DefaultLocale")
-        String message = String.format("<b>GPA &nbsp;&nbsp;&nbsp;:</b> &nbsp; %.2f <br> <b>CGPA :</b> &nbsp; %.2f", GPA, CGPA);
+        if(CGPA!=0){
+            message = String.format("&emsp;You got: <br> &emsp;&emsp;&emsp;&emsp;&emsp; <b>GPA &nbsp;&nbsp;&nbsp;:</b> &nbsp; %.2f <br> &emsp;&emsp;&emsp;&emsp;&emsp; <b>CGPA :</b> &nbsp; %.2f", GPA, CGPA);
+        }
+        else{
+            message = String.format("&emsp;You got: <br> &emsp;&emsp;&emsp;&emsp;&emsp; <b>GPA &nbsp;&nbsp;&nbsp;:</b> &nbsp; %.2f <br> &emsp;&emsp;&emsp;&emsp;&emsp; <b>CGPA :</b> &nbsp; Not Calculated", GPA);
+        }
+
         if(!String.valueOf(GPA).equals("NaN")){
             new AlertDialog.Builder(MainActivity.this)
                     .setIcon(R.drawable.result_icon)

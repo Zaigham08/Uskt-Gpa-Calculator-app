@@ -22,6 +22,12 @@ public class FlashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.flash_screen);
 
+        new Handler().postDelayed(() -> {
+            Intent intent = new Intent(FlashActivity.this, HomeActivity.class);
+            startActivity(intent);
+            finish();
+        }, SPLASH_SCREEN_TIMEOUT);
+
         ImageView logo = findViewById(R.id.logo);
         TextView name = findViewById(R.id.Myname);
         Animation animation = AnimationUtils.loadAnimation(this, R.anim.logo_animation);
@@ -30,11 +36,5 @@ public class FlashActivity extends AppCompatActivity {
         logo.setVisibility(View.VISIBLE);
         name.startAnimation(animation2);
 
-
-        new Handler().postDelayed(() -> {
-            Intent intent = new Intent(FlashActivity.this, HomeActivity.class);
-            startActivity(intent);
-            finish();
-        }, SPLASH_SCREEN_TIMEOUT);
     }
 }

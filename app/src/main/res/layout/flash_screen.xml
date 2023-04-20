@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/white">
+    android:background="@drawable/main_background">
 
     <ImageView
         android:id="@+id/logo"
@@ -17,11 +17,11 @@
         android:id="@+id/Myname"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerHorizontal="true"
         android:layout_below="@+id/logo"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="10dp"
         android:text="Made by Zaigham"
-        android:textColor="@color/dark_blue"
+        android:textColor="@color/white"
         android:textSize="20sp" />
 
 </RelativeLayout>
